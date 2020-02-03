@@ -6,6 +6,7 @@ import { switchMap } from 'rxjs/operators';
 
 import { ProductsService } from '@core/services/products/products.service';
 import { Product } from '@core/models/product.model';
+import * as FileSaver from 'file-saver';
 
 @Component({
   selector: 'app-product-detail',
@@ -75,6 +76,8 @@ export class ProductDetailComponent implements OnInit {
 
   getFile(){
     this.productsService.getFile().subscribe(content => {
+      var blob = new Blob([content], {type: 'text/plain;charset=utf8'});
+      FileSaver.saveAs(blob, 'archivo.txt')
       console.log(content);
     });
   }
