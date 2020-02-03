@@ -55,6 +55,10 @@ export class ProductsService {
     );
   }
 
+  getFile(){
+    return this.http.get('assets/files/test.txt', {responseType: 'text'});
+  }
+
   private handleError(error : HttpErrorResponse){
     console.error(error);
     Sentry.captureException(error);
