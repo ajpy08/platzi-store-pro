@@ -5,7 +5,7 @@ import { Product } from './../../models/product.model';
 
 import { environment } from './../../../../environments/environment';
 import { Observable, throwError } from 'rxjs';
-import { map, catchError } from "rxjs/operators";
+import { map, catchError, retry } from "rxjs/operators";
 import * as Sentry from "@sentry/browser";
 
 interface User {
@@ -47,8 +47,9 @@ export class ProductsService {
   }
 
   getRandomUsers() : Observable<User[]>{
-    return this.http.get('QUITAESTOPARAQUEFUNCIONEhttps://randomuser.me/api/?results=2')
+    return this.http.get('https://randomuser.me/api/?results=2')
     .pipe(
+      retry(3),
       catchError(this.handleError),
       map((response : any) => response.results as User[])
     );
