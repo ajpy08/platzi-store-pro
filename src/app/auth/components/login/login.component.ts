@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { AuthService } from './../../../core/services/auth.service';
+import { AuthService } from '@core/services/auth.service';
 
 
 @Component({
@@ -37,6 +37,12 @@ export class LoginComponent implements OnInit {
         alert('no es valido');
       });
     }
+  }
+
+  loginApi(){
+    this.authService.loginRestApi('nicolas@nicolas.com', '123456').subscribe(data => {
+      console.log(data);
+    });
   }
 
   private buildForm() {

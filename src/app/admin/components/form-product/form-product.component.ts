@@ -5,9 +5,9 @@ import { AngularFireStorage } from '@angular/fire/storage';
 
 import { finalize } from 'rxjs/operators';
 
-import { MyValidators } from './../../../utils/validators';
+import { MyValidators } from '@utils/validators';
 
-import { ProductsService } from './../../../core/services/products/products.service';
+import { ProductsService } from '@core/services/products/products.service';
 import { Observable } from 'rxjs';
 
 @Component({
