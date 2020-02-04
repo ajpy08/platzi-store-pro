@@ -48,7 +48,6 @@ fdescribe('ProductsService', () => {
       ];
       let dataError, dataResponse;
       // act
-      console.log(service);
       service.getAllProducts()
         .subscribe(response => {
           dataResponse = response;
